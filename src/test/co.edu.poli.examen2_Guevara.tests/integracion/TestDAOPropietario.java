@@ -1,0 +1,45 @@
+package integracion;
+
+import org.junit.jupiter.api.Test;
+
+import co.edu.poli.examen2_Guevara.modelo.Propietario;
+import co.edu.poli.examen2_Guevara.servicios.DAOPropietario;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
+public class TestDAOPropietario {
+
+    @Test
+    void readAll_noDebeRetornarNull() throws Exception {
+        DAOPropietario dao = new DAOPropietario();
+
+        List<Propietario> lista = dao.readall();
+
+        assertNotNull(lista);
+    }
+
+    @Test
+    void readAll_listaInicializada() throws Exception {
+        DAOPropietario dao = new DAOPropietario();
+
+        List<Propietario> lista = dao.readall();
+
+        assertTrue(lista.size() >= 0);
+    }
+
+    @Test
+    void readAll_objetosValidos() throws Exception {
+        DAOPropietario dao = new DAOPropietario();
+
+        List<Propietario> lista = dao.readall();
+
+        if (!lista.isEmpty()) {
+            Propietario p = lista.get(0);
+
+            assertNotNull(p.getId());
+            assertNotNull(p.getNombre());
+        }
+    }
+}
